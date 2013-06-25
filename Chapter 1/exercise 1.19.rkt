@@ -1,0 +1,29 @@
+#lang planet neil/sicp
+
+;; Exercise 1.19
+
+(define (even? n)
+  (= (remainder n 2) 0))
+
+(define (square n)
+  (* n n))
+
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+
+(define (fib-iter a b p q count)
+  (cond ((= count 0) b)
+        ((even? count)
+         (fib-iter a
+                   b
+                   (+ (square p) (square q))
+                   (+ (square q) (* 2 (* p q)))
+                   (/ count 2)))
+        (else (fib-iter (+ (* b q) (* a q) (* a p))
+                        (+ (* b p) (* a q))
+                        p
+                        q
+                        (- count 1)))))
+
+;; To solve for p' and q', substitute the transformations for a and b, into the rule for
+;; transforming b and factor the expression into terms with a and b exclusively.
