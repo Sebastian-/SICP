@@ -3,8 +3,10 @@
 ;; Exercise 2.18
 
 (define (reverse l)
-  (if (null? (cdr l))
-      (car l)
-      (cons (reverse (cdr l)) (car l))))
+  (define (iter list rev)
+    (if (null? list)
+        rev
+        (iter (cdr list) (cons (car list) rev))))
+  (iter l nil))
 
 (reverse (list 1 4 9 16 25))
