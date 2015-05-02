@@ -1,7 +1,7 @@
 #lang planet neil/sicp
 
 
-;; Exercise 2.44
+;; Exercise 2.45
 
 (define (split identity-placement split-placement)
   (define (split-procedure painter n)
